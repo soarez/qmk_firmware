@@ -49,7 +49,8 @@ define EXEC_DFU
 		fi; \
 		$(DFU_PROGRAMMER) $(MCU) flash $(BUILD_DIR)/$(TARGET).hex;\
 	fi; \
-	$(DFU_PROGRAMMER) $(MCU) reset
+	$(DFU_PROGRAMMER) $(MCU) reset --debug 100 ;\
+	printf "==> $(DFU_PROGRAMMER) $(MCU) reset --> exit code $$?\n"
 endef
 
 dfu: $(BUILD_DIR)/$(TARGET).hex cpfirmware check-size
