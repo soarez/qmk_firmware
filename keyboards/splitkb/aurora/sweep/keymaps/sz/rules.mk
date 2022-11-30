@@ -1,6 +1,6 @@
 
 # https://docs.qmk.fm/#/feature_mouse_keys?id=enabling-mouse-keys
-MOUSEKEY_ENABLE = no
+MOUSEKEY_ENABLE = yes
 
 # This allows you to use the system and audio control key codes.
 EXTRAKEY_ENABLE = yes
@@ -26,25 +26,25 @@ CAPS_WORD_ENABLE = no
 # https://docs.qmk.fm/#/faq_debug?id=debugging
 CONSOLE_ENABLE     = no
 
-# # EXTRAFLAGS        += -flto
+# EXTRAFLAGS        += -flto
 
 # https://docs.qmk.fm/#/feature_command?id=command
 COMMAND_ENABLE = no
 
 
 # https://docs.qmk.fm/#/feature_tap_dance
-TAP_DANCE_ENABLE   = no
+# TAP_DANCE_ENABLE   = no
 
 # https://docs.qmk.fm/#/feature_space_cadet
 SPACE_CADET_ENABLE = no
 
 # https://docs.qmk.fm/#/feature_grave_esc
-GRAVE_ESC_ENABLE = no
+# GRAVE_ESC_ENABLE = no
 
 # https://docs.qmk.fm/#/keycodes_magic?id=magic-keycodes
 MAGIC_ENABLE = no
 
-# # https://docs.qmk.fm/#/squeezing_avr
+# https://docs.qmk.fm/#/squeezing_avr
 AVR_USE_MINIMAL_PRINTF = yes
 LTO_ENABLE = yes
 OLED_DRIVER_ENABLE = no
