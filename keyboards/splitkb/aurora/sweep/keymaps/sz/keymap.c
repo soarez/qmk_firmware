@@ -13,6 +13,20 @@
 #define L_ROPT    ROPT_T(KC_L)
 #define SCLN_RCTL RCTL_T(KC_SCLN)
 
+// MacOS stuff
+#undef KC_BRIU
+#define KC_BRIU KC_PAUSE
+#undef KC_BRID
+#define KC_BRID KC_SCROLL_LOCK
+#undef KC_UNDO
+#define KC_UNDO LGUI(KC_Z)
+#undef KC_CUT
+#define KC_CUT LGUI(KC_X)
+#undef KC_COPY
+#define KC_COPY LGUI(KC_C)
+#undef KC_PASTE
+#define KC_PASTE LGUI(KC_V)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* [0] = LAYOUT( */
 /*     RGB_TOG  , RGB_HUI , RGB_SAI , RGB_VAI     , RGB_SPI     , RGB_TOG  , RGB_HUI , RGB_SAI , RGB_VAI     , RGB_SPI     , */
