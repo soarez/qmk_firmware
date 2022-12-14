@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), LT(4,KC_ENT)
 ),
 [1] = LAYOUT(
-    KC_GRV   , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DEL  ,
+    KC_TILD  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DEL  ,
     KC_TAB   , KC_PERC , KC_CIRC , KC_AMPR , KC_ASTR , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , KC_TRNS ,
     XXXXXXX  , XXXXXXX , XXXXXXX , KC_UNDS , KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
                                    MO(7)   , KC_NO   , KC_TRNS , KC_TRNS
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   XXXXXXX , XXXXXXX , KC_NO   , MO(8)
 ),
 [3] = LAYOUT(
-    KC_TILD , KC_TRNS , KC_UP   , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    KC_GRV  , KC_TRNS , KC_UP   , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
     KC_TRNS , KC_LEFT , KC_DOWN , KC_RGHT , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
     KC_UNDO , KC_CUT  , KC_COPY , KC_PASTE, KC_ENT  , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
                                   KC_NO   , MO(5)   , XXXXXXX , XXXXXXX
