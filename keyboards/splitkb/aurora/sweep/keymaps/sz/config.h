@@ -20,10 +20,14 @@
 // but keyboards/splitkb/aurora/sweep/sweep.c:239 depends on it
 /* #define NO_ACTION_ONESHOT */
 
+
 // https://docs.qmk.fm/#/tap_hold?id=ignore-mod-tap-interrupt
+#define TAPPING_TERM 140
+#define TAPPING_TERM_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT
-#define PERMISSIVE_HOLD
-#define TAPPING_TERM 300
+// Do not enable these, as they'll enable hold functions too early
+// #define PERMISSIVE_HOLD
+// #define HOLD_ON_OTHER_KEY_PRESS
 
 // Not yet available in `keymap.json` format
 #ifdef RGB_MATRIX_ENABLE
