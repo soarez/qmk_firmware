@@ -93,6 +93,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case S_LOPT:
+        case L_ROPT:
+            return TAPPING_TERM + 40;
         case T_CAG:
         case Y_CAG:
             return TAPPING_TERM + 200;
