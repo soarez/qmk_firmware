@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [5] = LAYOUT(
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_BOOT , KC_F1  , KC_F2  , KC_F3  , KC_F4   , KC_F5   ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_MAKE , KC_F6  , KC_7   , KC_8   , KC_9    , KC_F10  ,
+    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_MAKE , KC_F6  , KC_F7  , KC_F8  , KC_F9   , KC_F10  ,
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_SLEP , KC_F10 , KC_F11 , KC_F12 , XXXXXXX , XXXXXXX ,
                                   KC_NO   , KC_NO   , XXXXXXX , XXXXXXX
 ),
