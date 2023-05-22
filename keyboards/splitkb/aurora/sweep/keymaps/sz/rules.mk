@@ -21,7 +21,7 @@ RGB_MATRIX_ENABLE = yes
 AUTO_SHIFT_ENABLE  = no
 
 # https://docs.qmk.fm/#/feature_caps_word
-CAPS_WORD_ENABLE = no
+CAPS_WORD_ENABLE = yes
 
 # https://docs.qmk.fm/#/faq_debug?id=debugging
 CONSOLE_ENABLE     = no
