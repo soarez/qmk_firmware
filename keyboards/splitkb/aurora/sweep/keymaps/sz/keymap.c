@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q        , KC_W        , KC_E        , KC_R      , T_CAG    , Y_CAG  , KC_U      , KC_I           , KC_O          , KC_P           ,
     A_LCTL      , S_LOPT      , D_LCMD      , F_LSFT    , KC_G     , KC_H   , J_RSFT    , K_RCMD         , L_ROPT        , SCLN_RCTL      ,
     KC_Z        , KC_X        , KC_C        , KC_V      , KC_B     , KC_N   , KC_M      , KC_COMM        , KC_DOT        , KC_SLSH        ,
-                                        LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), LT(4,KC_ENT)
+                                        LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), MO(4)
 ),
 [1] = LAYOUT(
     KC_TILD  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DEL  ,
@@ -50,20 +50,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [2] = LAYOUT(
     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DQUO , KC_LPRN , KC_RPRN , XXXXXXX , KC_BSPC ,
     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_QUOT , KC_LCBR , KC_RCBR , XXXXXXX , KC_BSLS ,
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , XXXXXXX , KC_LBRC , KC_RBRC , XXXXXXX , XXXXXXX ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , XXXXXXX , KC_LBRC , KC_RBRC , XXXXXXX , KC_ENT  ,
                                   XXXXXXX , XXXXXXX , KC_NO   , MO(8)
 ),
 [3] = LAYOUT(
-    KC_GRV  , KC_TRNS , KC_UP   , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-    CW_TOGG , KC_LEFT , KC_DOWN , KC_RGHT , KC_BSPC , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-    KC_UNDO , KC_CUT  , KC_COPY , KC_PASTE, KC_ENT  , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-                                  KC_NO   , MO(5)   , XXXXXXX , XXXXXXX
+    KC_GRV  , KC_TRNS , KC_UP   , XXXXXXX , XXXXXXX , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    CW_TOGG , KC_LEFT , KC_DOWN , KC_RGHT , KC_BSPC , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    KC_UNDO , KC_CUT  , KC_COPY , KC_PASTE, KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+                                  KC_NO   , MO(5)   , KC_TRNS , KC_TRNS
 ),
 [4] = LAYOUT(
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_PLUS , KC_1  , KC_2 , KC_3 , KC_DEL  ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_EQL  , KC_4  , KC_5 , KC_6 , KC_PIPE ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_MINS , KC_7  , KC_8 , KC_9 , KC_0    ,
-                                  XXXXXXX , XXXXXXX , MO(6)   , KC_NO
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_PLUS , KC_1  , KC_2 , KC_3 , KC_DEL  ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_EQL  , KC_4  , KC_5 , KC_6 , KC_PIPE ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_MINS , KC_7  , KC_8 , KC_9 , KC_0    ,
+                                  KC_TRNS , KC_TRNS , MO(6)   , KC_NO
 ),
 [5] = LAYOUT(
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_BOOT , KC_F1  , KC_F2  , KC_F3  , KC_F4   , KC_F5   ,
@@ -72,10 +72,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   KC_NO   , KC_NO   , XXXXXXX , XXXXXXX
 ),
 [6] = LAYOUT(
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_PPLS , KC_P1 , KC_P2 , KC_P3 , KC_PAST   ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_PMNS , KC_P4 , KC_P5 , KC_P6 , KC_PSLS   ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_P0   , KC_P7 , KC_P8 , KC_P9 , KC_KP_DOT ,
-                                  XXXXXXX , XXXXXXX , KC_NO   , KC_NO
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_PPLS , KC_P1 , KC_P2 , KC_P3 , KC_PAST   ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_PMNS , KC_P4 , KC_P5 , KC_P6 , KC_PSLS   ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_P0   , KC_P7 , KC_P8 , KC_P9 , KC_KP_DOT ,
+                                  KC_TRNS , KC_TRNS , KC_NO   , KC_NO
 ),
 [7] = LAYOUT(
     KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , XXXXXXX , KC_WH_U , XXXXXXX , KC_MS_U , XXXXXXX , KC_ACL2 ,
