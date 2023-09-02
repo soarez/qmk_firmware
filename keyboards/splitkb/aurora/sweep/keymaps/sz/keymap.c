@@ -6,8 +6,10 @@
 #define S_LOPT    LOPT_T(KC_S)
 #define D_LCMD    LCMD_T(KC_D)
 #define F_LSFT    LSFT_T(KC_F)
+#define G_HYPR    HYPR_T(KC_G)
 #define T_CAG     LCAG_T(KC_T)
 #define Y_CAG     RCAG_T(KC_Y)
+#define H_HYPR    HYPR_T(KC_H)
 #define J_RSFT    RSFT_T(KC_J)
 #define K_RCMD    RCMD_T(KC_K)
 #define L_ROPT    ROPT_T(KC_L)
@@ -36,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* ), */
 [0] = LAYOUT(
     KC_Q        , KC_W        , KC_E        , KC_R      , T_CAG    , Y_CAG  , KC_U      , KC_I           , KC_O          , KC_P           ,
-    A_LCTL      , S_LOPT      , D_LCMD      , F_LSFT    , KC_G     , KC_H   , J_RSFT    , K_RCMD         , L_ROPT        , SCLN_RCTL      ,
+    A_LCTL      , S_LOPT      , D_LCMD      , F_LSFT    , G_HYPR   , H_HYPR , J_RSFT    , K_RCMD         , L_ROPT        , SCLN_RCTL      ,
     KC_Z        , KC_X        , KC_C        , KC_V      , KC_B     , KC_N   , KC_M      , KC_COMM        , KC_DOT        , KC_SLSH        ,
                                         LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), MO(4)
 ),
@@ -95,10 +97,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case S_LOPT:
         case L_ROPT:
-            return TAPPING_TERM + 40;
+            return TAPPING_TERM + 50;
         case T_CAG:
         case Y_CAG:
-            return TAPPING_TERM + 200;
+        case G_HYPR:
+        case H_HYPR:
+            return TAPPING_TERM + 250;
         default:
             return TAPPING_TERM;
     }

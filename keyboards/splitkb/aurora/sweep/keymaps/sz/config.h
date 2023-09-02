@@ -20,9 +20,18 @@
 // but keyboards/splitkb/aurora/sweep/sweep.c:239 depends on it
 /* #define NO_ACTION_ONESHOT */
 
+// WARNING: this seems have been deprecated
+// https://precondition.github.io/home-row-mods
+// > "If you read old posts about home row mods, you might come across
+// > comments urging you to enable IGNORE_MOD_TAP_INTERRUPT to use
+// > home row mods comfortably because the old default behavior of
+// > mod-taps was akin to “hold on other key press” but since QMK
+// > version 0.21, released in 2023 May 28, the default behavior has
+// > been changed and the now obsolete IGNORE_MOD_TAP_INTERRUPT option
+// > removed."
 
 // https://docs.qmk.fm/#/tap_hold?id=ignore-mod-tap-interrupt
-#define TAPPING_TERM 140
+#define TAPPING_TERM 150
 #define TAPPING_TERM_PER_KEY
 #define IGNORE_MOD_TAP_INTERRUPT
 // Do not enable these, as they'll enable hold functions too early
