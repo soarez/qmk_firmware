@@ -45,14 +45,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [1] = LAYOUT(
     KC_TILD  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DEL  ,
     KC_TAB   , KC_PERC , KC_CIRC , KC_AMPR , KC_ASTR , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , KC_TRNS ,
-    XXXXXXX  , XXXXXXX , XXXXXXX , KC_UNDS , KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    XXXXXXX  , XXXXXXX , XXXXXXX , KC_BSPC , KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
                                    MO(7)   , KC_NO   , KC_TRNS , KC_TRNS
 ),
 
 [2] = LAYOUT(
     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DQUO , KC_LPRN , KC_RPRN , XXXXXXX , KC_BSPC ,
     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_QUOT , KC_LCBR , KC_RCBR , XXXXXXX , KC_BSLS ,
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , XXXXXXX , KC_LBRC , KC_RBRC , XXXXXXX , KC_ENT  ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_UNDS , KC_LBRC , KC_RBRC , XXXXXXX , KC_ENT  ,
                                   XXXXXXX , XXXXXXX , KC_NO   , MO(8)
 ),
 [3] = LAYOUT(
@@ -68,8 +68,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   KC_TRNS , KC_TRNS , MO(6)   , KC_NO
 ),
 [5] = LAYOUT(
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_BOOT , KC_F1  , KC_F2  , KC_F3  , KC_F4   , KC_F5   ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_MAKE , KC_F6  , KC_F7  , KC_F8  , KC_F9   , KC_F10  ,
+    KC_BTN1 , KC_WH_D , KC_MS_U , KC_WH_U , QK_BOOT , KC_F1  , KC_F2  , KC_F3  , KC_F4   , KC_F5   ,
+    KC_BTN2 , KC_MS_L , KC_MS_D , KC_MS_R , QK_MAKE , KC_F6  , KC_F7  , KC_F8  , KC_F9   , KC_F10  ,
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_SLEP , KC_F10 , KC_F11 , KC_F12 , XXXXXXX , XXXXXXX ,
                                   KC_NO   , KC_NO   , XXXXXXX , XXXXXXX
 ),
@@ -80,21 +80,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   KC_TRNS , KC_TRNS , KC_NO   , KC_NO
 ),
 [7] = LAYOUT(
-    KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , XXXXXXX , KC_WH_U , XXXXXXX , KC_MS_U , XXXXXXX , KC_ACL2 ,
-    KC_MRWD , KC_BRIU , KC_VOLU , XXXXXXX , XXXXXXX , KC_WH_D , KC_MS_L , KC_MS_D , KC_MS_R , KC_ACL1 ,
-    KC_MPLY , KC_BRID , KC_VOLD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_ACL0 ,
+    KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , QK_BOOT , KC_WH_U , XXXXXXX , KC_MS_U , XXXXXXX , KC_ACL2 ,
+    KC_MRWD , KC_BRIU , KC_VOLU , XXXXXXX , QK_MAKE , KC_WH_D , KC_MS_L , KC_MS_D , KC_MS_R , KC_ACL1 ,
+    KC_MPLY , KC_BRID , KC_VOLD , XXXXXXX , KC_SLEP , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_ACL0 ,
                                   KC_NO   , KC_NO   , KC_BTN1 , KC_BTN2
 ),
 [8] = LAYOUT(
-    RGB_TOG , RGB_HUI , RGB_SAI , RGB_VAI , RGB_SPI , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-    RGB_MOD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-    RGB_RMOD, RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    RGB_TOG , RGB_HUI , RGB_SAI , RGB_VAI , RGB_SPI , QK_BOOT , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
+    RGB_MOD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_MAKE , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
+    RGB_RMOD, RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , KC_SLEP , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
                                   XXXXXXX , XXXXXXX , KC_NO   , KC_NO
 )
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case KC_ESC:
+        case KC_SPC:
+            return TAPPING_TERM - 50;
         case S_LOPT:
         case L_ROPT:
             return TAPPING_TERM + 50;
