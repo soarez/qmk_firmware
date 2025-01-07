@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   XXXXXXX , XXXXXXX , KC_NO   , MO(8)
 ),
 [3] = LAYOUT(
-    KC_GRV  , KC_TRNS , KC_UP   , XXXXXXX , XXXXXXX , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    KC_GRV  , KC_TRNS , KC_UP   , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
     CW_TOGG , KC_LEFT , KC_DOWN , KC_RGHT , KC_BSPC , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
     KC_UNDO , KC_CUT  , KC_COPY , KC_PASTE, KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
                                   KC_NO   , MO(5)   , KC_TRNS , KC_TRNS
@@ -68,27 +68,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   KC_TRNS , KC_TRNS , MO(6)   , KC_NO
 ),
 [5] = LAYOUT(
-    KC_BTN1 , KC_WH_D , KC_MS_U , KC_WH_U , QK_BOOT , KC_F1  , KC_F2  , KC_F3  , KC_F4   , KC_F5   ,
-    KC_BTN2 , KC_MS_L , KC_MS_D , KC_MS_R , QK_MAKE , KC_F6  , KC_F7  , KC_F8  , KC_F9   , KC_F10  ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_SLEP , KC_F10 , KC_F11 , KC_F12 , XXXXXXX , XXXXXXX ,
-                                  KC_NO   , KC_NO   , XXXXXXX , XXXXXXX
+    KC_PPLS   , KC_P1 , KC_P2 , KC_P3 , KC_PAST, KC_F1   , KC_F2  , KC_F3  , KC_F4   , KC_F5  ,
+    KC_PMNS   , KC_P4 , KC_P5 , KC_P6 , KC_PSLS, KC_F6   , KC_F7  , KC_F8  , KC_F9   , KC_F10 ,
+    KC_KP_DOT , KC_P7 , KC_P8 , KC_P9 , KC_P0  , KC_F11  , KC_F12 , XXXXXXX, XXXXXXX , XXXXXXX,
+                                KC_NO , KC_NO  , XXXXXXX , XXXXXXX
 ),
 [6] = LAYOUT(
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_PPLS , KC_P1 , KC_P2 , KC_P3 , KC_PAST   ,
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_PMNS , KC_P4 , KC_P5 , KC_P6 , KC_PSLS   ,
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_P0   , KC_P7 , KC_P8 , KC_P9 , KC_KP_DOT ,
-                                  KC_TRNS , KC_TRNS , KC_NO   , KC_NO
+    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+                                  XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX
 ),
 [7] = LAYOUT(
-    KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , QK_BOOT , KC_WH_U , XXXXXXX , KC_MS_U , XXXXXXX , KC_ACL2 ,
-    KC_MRWD , KC_BRIU , KC_VOLU , XXXXXXX , QK_MAKE , KC_WH_D , KC_MS_L , KC_MS_D , KC_MS_R , KC_ACL1 ,
-    KC_MPLY , KC_BRID , KC_VOLD , XXXXXXX , KC_SLEP , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , KC_ACL0 ,
-                                  KC_NO   , KC_NO   , KC_BTN1 , KC_BTN2
+    KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , KC_SLEP , KC_SLEP , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
+    KC_MRWD , KC_BRIU , KC_VOLU , XXXXXXX , QK_MAKE , QK_MAKE , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
+    KC_MPLY , KC_BRID , KC_VOLD , XXXXXXX , QK_BOOT , QK_BOOT , KC_ACL0 , KC_ACL1 , KC_ACL2 , XXXXXXX ,
+                                  KC_NO   , KC_NO   , KC_NO   , KC_NO
 ),
 [8] = LAYOUT(
     RGB_TOG , RGB_HUI , RGB_SAI , RGB_VAI , RGB_SPI , QK_BOOT , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
     RGB_MOD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_MAKE , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
-    RGB_RMOD, RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , KC_SLEP , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    RGB_RMOD, RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , KC_SLEP , KC_ACL0 , KC_ACL1 , KC_ACL2 , XXXXXXX ,
                                   XXXXXXX , XXXXXXX , KC_NO   , KC_NO
 )
 };
