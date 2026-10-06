@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "macro_text.h"
 
 
 // Home row mods
@@ -30,11 +31,13 @@
 #define KC_PASTE LGUI(KC_V)
 
 // Right outer thumb: hold for layer 4, or tap then press-and-hold to hold F20
-// (push-to-talk in Wispr Flow and superwhisper)
+// (push-to-talk in Wispr Flow and superwhisper). A double tap sends one F20
+// tap (superwhisper toggle), a triple tap sends two (Wispr Flow toggle).
 #define F20_TAP_WINDOW 200
 
 enum custom_keycodes {
     L4_F20 = SAFE_RANGE,
+    LCGRIND, // types MACRO_LCGRIND, set at build time
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -64,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   XXXXXXX , XXXXXXX , KC_NO   , MO(8)
 ),
 [3] = LAYOUT(
-    KC_GRV  , KC_TRNS , KC_UP   , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    KC_GRV  , KC_TRNS , KC_UP   , KC_TRNS , KC_F20  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
     CW_TOGG , KC_LEFT , KC_DOWN , KC_RGHT , KC_BSPC , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
     KC_UNDO , KC_CUT  , KC_COPY , KC_PASTE, KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
                                   KC_NO   , MO(5)   , KC_TRNS , KC_TRNS
@@ -83,29 +86,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [6] = LAYOUT(
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-    XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    LCGRIND , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
                                   XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX
 ),
+// Media and mouse, the same on both boards
 [7] = LAYOUT(
-    KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , KC_SLEP , KC_SLEP , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
-    KC_MRWD , KC_BRIU , KC_VOLU , XXXXXXX , QK_MAKE , QK_MAKE , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
-    KC_MPLY , KC_BRID , KC_VOLD , XXXXXXX , QK_BOOT , QK_BOOT , KC_ACL0 , KC_ACL1 , KC_ACL2 , XXXXXXX ,
+    KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , KC_SLEP , XXXXXXX , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
+    KC_MRWD , KC_BRIU , KC_VOLU , XXXXXXX , XXXXXXX , XXXXXXX , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
+    KC_MPLY , KC_BRID , KC_VOLD , QK_RBT  , QK_BOOT , QK_BOOT , KC_ACL0 , KC_ACL1 , KC_ACL2 , XXXXXXX ,
                                   KC_NO   , KC_NO   , KC_NO   , KC_NO
 ),
+// System: this board's own hardware controls (gil has Bluetooth here)
 [8] = LAYOUT(
-    RGB_TOG , RGB_HUI , RGB_SAI , RGB_VAI , RGB_SPI , QK_BOOT , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
-    RGB_MOD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , QK_MAKE , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
-    RGB_RMOD, RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , KC_SLEP , KC_ACL0 , KC_ACL1 , KC_ACL2 , XXXXXXX ,
+    RGB_TOG , RGB_HUI , RGB_SAI , RGB_VAI , RGB_SPI , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    RGB_MOD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    RGB_RMOD, RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , QK_BOOT , QK_RBT  , XXXXXXX , XXXXXXX , XXXXXXX ,
                                   XXXXXXX , XXXXXXX , KC_NO   , KC_NO
 )
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_ESC:
-        case KC_SPC:
-            return TAPPING_TERM - 50;
         case S_LOPT:
         case L_ROPT:
             return TAPPING_TERM + 50;
@@ -126,6 +128,9 @@ static bool     l4_f20_armed;       // the last press was a clean tap
 static bool     l4_f20_holding;     // F20 is down
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode == LCGRIND && record->event.pressed) {
+        SEND_STRING(MACRO_LCGRIND);
+    }
     if (keycode != L4_F20) {
         if (record->event.pressed) {
             l4_f20_interrupted = true;
@@ -144,11 +149,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         l4_f20_armed       = false;
         l4_f20_interrupted = false;
         l4_f20_pressed_at  = timer_read32();
-    } else if (l4_f20_holding) {
-        unregister_code(KC_F20);
-        l4_f20_holding = false;
     } else {
-        layer_off(4);
+        if (l4_f20_holding) {
+            unregister_code(KC_F20);
+            l4_f20_holding = false;
+        } else {
+            layer_off(4);
+        }
+        // Any short tap arms the next press as F20, so taps after the first
+        // pass through live: a triple tap sends a double tap of F20
         l4_f20_armed       = !l4_f20_interrupted && timer_elapsed32(l4_f20_pressed_at) < F20_TAP_WINDOW;
         l4_f20_released_at = timer_read32();
     }

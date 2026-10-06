@@ -1,3 +1,6 @@
+# Text typed by the text macros, kept out of git: see macro_text.py
+$(shell python3 $(dir $(lastword $(MAKEFILE_LIST)))macro_text.py)
+
 
 # https://docs.qmk.fm/#/feature_mouse_keys?id=enabling-mouse-keys
 MOUSEKEY_ENABLE = yes
