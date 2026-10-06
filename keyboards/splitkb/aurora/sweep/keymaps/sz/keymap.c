@@ -1,34 +1,8 @@
 #include QMK_KEYBOARD_H
 #include "macro_text.h"
 
-
-// Home row mods
-#define A_LCTL    LCTL_T(KC_A)
-#define S_LOPT    LOPT_T(KC_S)
-#define D_LCMD    LCMD_T(KC_D)
-#define F_LSFT    LSFT_T(KC_F)
-#define G_HYPR    HYPR_T(KC_G)
-#define T_CAG     LCAG_T(KC_T)
-#define Y_CAG     RCAG_T(KC_Y)
-#define H_HYPR    HYPR_T(KC_H)
-#define J_RSFT    RSFT_T(KC_J)
-#define K_RCMD    RCMD_T(KC_K)
-#define L_ROPT    ROPT_T(KC_L)
-#define SCLN_RCTL RCTL_T(KC_SCLN)
-
-// MacOS stuff
-#undef KC_BRIU
-#define KC_BRIU KC_PAUSE
-#undef KC_BRID
-#define KC_BRID KC_SCROLL_LOCK
-#undef KC_UNDO
-#define KC_UNDO LGUI(KC_Z)
-#undef KC_CUT
-#define KC_CUT LGUI(KC_X)
-#undef KC_COPY
-#define KC_COPY LGUI(KC_C)
-#undef KC_PASTE
-#define KC_PASTE LGUI(KC_V)
+// The layer tables and get_tapping_term are generated from gil/layout/layout.yaml
+// by gil/layout/generate.py, so both keyboards share one layout.
 
 // Right outer thumb: hold for layer 4, or tap then press-and-hold to hold F20
 // (push-to-talk in Wispr Flow and superwhisper). A double tap sends one F20
@@ -40,86 +14,89 @@ enum custom_keycodes {
     LCGRIND, // types MACRO_LCGRIND, set at build time
 };
 
+// BEGIN GENERATED layers from gil/layout/layout.yaml by layout/generate.py; edit that, not this
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* [0] = LAYOUT( */
-/*     RGB_TOG  , RGB_HUI , RGB_SAI , RGB_VAI     , RGB_SPI     , RGB_TOG  , RGB_HUI , RGB_SAI , RGB_VAI     , RGB_SPI     , */
-/*     RGB_MOD  , XXXXXXX , XXXXXXX , XXXXXXX     , XXXXXXX     , RGB_MOD  , XXXXXXX , XXXXXXX , XXXXXXX     , XXXXXXX     , */
-/*     RGB_RMOD , RGB_HUD , RGB_SAD , RGB_VAD     , RGB_SPD     , RGB_RMOD , RGB_HUD , RGB_SAD , RGB_VAD     , RGB_SPD     , */
-/*                                    LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), LT(4,KC_ENT) */
-/* ), */
 [0] = LAYOUT(
-    KC_Q        , KC_W        , KC_E        , KC_R      , T_CAG    , Y_CAG  , KC_U      , KC_I           , KC_O          , KC_P           ,
-    A_LCTL      , S_LOPT      , D_LCMD      , F_LSFT    , G_HYPR   , H_HYPR , J_RSFT    , K_RCMD         , L_ROPT        , SCLN_RCTL      ,
-    KC_Z        , KC_X        , KC_C        , KC_V      , KC_B     , KC_N   , KC_M      , KC_COMM        , KC_DOT        , KC_SLSH        ,
-                                        LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), L4_F20
+    KC_Q         , KC_W         , KC_E         , KC_R         , LCAG_T(KC_T) , RCAG_T(KC_Y) , KC_U         , KC_I         , KC_O         , KC_P            ,
+    LCTL_T(KC_A) , LOPT_T(KC_S) , LCMD_T(KC_D) , LSFT_T(KC_F) , HYPR_T(KC_G) , HYPR_T(KC_H) , RSFT_T(KC_J) , RCMD_T(KC_K) , ROPT_T(KC_L) , RCTL_T(KC_SCLN) ,
+    KC_Z         , KC_X         , KC_C         , KC_V         , KC_B         , KC_N         , KC_M         , KC_COMM      , KC_DOT       , KC_SLSH         ,
+                                                 LT(3,KC_ESC) , LT(1,KC_SPC) , LT(2,KC_SPC) , L4_F20
 ),
+// Symbols and arrows
 [1] = LAYOUT(
-    KC_TILD  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DEL  ,
-    KC_TAB   , KC_PERC , KC_CIRC , KC_AMPR , KC_ASTR , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , KC_TRNS ,
-    XXXXXXX  , XXXXXXX , XXXXXXX , KC_BSPC , KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
-                                   MO(7)   , KC_NO   , KC_TRNS , KC_TRNS
+    KC_TILD , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DEL  ,
+    KC_TAB  , KC_PERC , KC_CIRC , KC_AMPR , KC_ASTR , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , KC_TRNS ,
+    XXXXXXX , XXXXXXX , XXXXXXX , KC_BSPC , KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+                                  MO(7)   , XXXXXXX , KC_TRNS , KC_TRNS
 ),
-
+// Brackets
 [2] = LAYOUT(
     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DQUO , KC_LPRN , KC_RPRN , XXXXXXX , KC_BSPC ,
     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_QUOT , KC_LCBR , KC_RCBR , XXXXXXX , KC_BSLS ,
     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_UNDS , KC_LBRC , KC_RBRC , XXXXXXX , KC_ENT  ,
-                                  XXXXXXX , XXXXXXX , KC_NO   , MO(8)
+                                  XXXXXXX , XXXXXXX , XXXXXXX , MO(8)
 ),
+// Navigation and editing
 [3] = LAYOUT(
-    KC_GRV  , KC_TRNS , KC_UP   , KC_TRNS , KC_F20  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
-    CW_TOGG , KC_LEFT , KC_DOWN , KC_RGHT , KC_BSPC , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
-    KC_UNDO , KC_CUT  , KC_COPY , KC_PASTE, KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
-                                  KC_NO   , MO(5)   , KC_TRNS , KC_TRNS
+    KC_GRV     , KC_TRNS    , KC_UP      , KC_TRNS    , KC_F20  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    CW_TOGG    , KC_LEFT    , KC_DOWN    , KC_RGHT    , KC_BSPC , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    LGUI(KC_Z) , LGUI(KC_X) , LGUI(KC_C) , LGUI(KC_V) , KC_ENT  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+                                           XXXXXXX    , MO(5)   , KC_TRNS , KC_TRNS
 ),
+// Numbers
 [4] = LAYOUT(
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_PLUS , KC_1  , KC_2 , KC_3 , KC_DEL  ,
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_EQL  , KC_4  , KC_5 , KC_6 , KC_PIPE ,
-    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_MINS , KC_7  , KC_8 , KC_9 , KC_0    ,
-                                  KC_TRNS , KC_TRNS , MO(6)   , KC_NO
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_PLUS , KC_1 , KC_2 , KC_3 , KC_DEL  ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_EQL  , KC_4 , KC_5 , KC_6 , KC_PIPE ,
+    KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_MINS , KC_7 , KC_8 , KC_9 , KC_0    ,
+                                  KC_TRNS , KC_TRNS , MO(6)   , XXXXXXX
 ),
+// Keypad and F-keys
 [5] = LAYOUT(
-    KC_PPLS   , KC_P1 , KC_P2 , KC_P3 , KC_PAST, KC_F1   , KC_F2  , KC_F3  , KC_F4   , KC_F5  ,
-    KC_PMNS   , KC_P4 , KC_P5 , KC_P6 , KC_PSLS, KC_F6   , KC_F7  , KC_F8  , KC_F9   , KC_F10 ,
-    KC_KP_DOT , KC_P7 , KC_P8 , KC_P9 , KC_P0  , KC_F11  , KC_F12 , XXXXXXX, XXXXXXX , XXXXXXX,
-                                KC_NO , KC_NO  , XXXXXXX , XXXXXXX
+    KC_PPLS   , KC_P1 , KC_P2 , KC_P3 , KC_PAST , KC_F1  , KC_F2  , KC_F3   , KC_F4   , KC_F5   ,
+    KC_PMNS   , KC_P4 , KC_P5 , KC_P6 , KC_PSLS , KC_F6  , KC_F7  , KC_F8   , KC_F9   , KC_F10  ,
+    KC_KP_DOT , KC_P7 , KC_P8 , KC_P9 , KC_P0   , KC_F11 , KC_F12 , XXXXXXX , XXXXXXX , XXXXXXX ,
+                                XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX
 ),
+// Text macros
 [6] = LAYOUT(
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
     LCGRIND , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
     XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
                                   XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX
 ),
-// Media and mouse, the same on both boards
+// Media and mouse, the same on both boards. macOS reads Pause and ScrLk as display brightness up and down.
 [7] = LAYOUT(
-    KC_MFFD , XXXXXXX , KC_MUTE , XXXXXXX , KC_SLEP , XXXXXXX , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
-    KC_MRWD , KC_BRIU , KC_VOLU , XXXXXXX , XXXXXXX , XXXXXXX , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
-    KC_MPLY , KC_BRID , KC_VOLD , QK_RBT  , QK_BOOT , QK_BOOT , KC_ACL0 , KC_ACL1 , KC_ACL2 , XXXXXXX ,
-                                  KC_NO   , KC_NO   , KC_NO   , KC_NO
+    KC_MFFD , XXXXXXX        , KC_MUTE , XXXXXXX , KC_SLEP , XXXXXXX , KC_WH_D , KC_MS_U , KC_WH_U , KC_BTN1 ,
+    KC_MRWD , KC_PAUSE       , KC_VOLU , XXXXXXX , XXXXXXX , XXXXXXX , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 ,
+    KC_MPLY , KC_SCROLL_LOCK , KC_VOLD , QK_RBT  , QK_BOOT , QK_BOOT , KC_ACL0 , KC_ACL1 , KC_ACL2 , XXXXXXX ,
+                                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX
 ),
-// System: this board's own hardware controls (gil has Bluetooth here)
+// System, each board's own hardware controls
 [8] = LAYOUT(
-    RGB_TOG , RGB_HUI , RGB_SAI , RGB_VAI , RGB_SPI , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-    RGB_MOD , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
-    RGB_RMOD, RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , QK_BOOT , QK_RBT  , XXXXXXX , XXXXXXX , XXXXXXX ,
-                                  XXXXXXX , XXXXXXX , KC_NO   , KC_NO
+    RGB_TOG  , RGB_HUI , RGB_SAI , RGB_VAI , RGB_SPI , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    RGB_MOD  , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,
+    RGB_RMOD , RGB_HUD , RGB_SAD , RGB_VAD , RGB_SPD , QK_BOOT , QK_RBT  , XXXXXXX , XXXXXXX , XXXXXXX ,
+                                   XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX
 )
 };
+// END GENERATED layers
 
+// BEGIN GENERATED timing from gil/layout/layout.yaml by layout/generate.py; edit that, not this
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case S_LOPT:
-        case L_ROPT:
-            return TAPPING_TERM + 50;
-        case T_CAG:
-        case Y_CAG:
-        case G_HYPR:
-        case H_HYPR:
-            return TAPPING_TERM + 250;
+        case LOPT_T(KC_S):
+        case ROPT_T(KC_L):
+            return 200;
+        case LCAG_T(KC_T):
+        case RCAG_T(KC_Y):
+        case HYPR_T(KC_G):
+        case HYPR_T(KC_H):
+            return 400;
         default:
             return TAPPING_TERM;
     }
 }
+// END GENERATED timing
 
 static uint32_t l4_f20_pressed_at;
 static uint32_t l4_f20_released_at;
