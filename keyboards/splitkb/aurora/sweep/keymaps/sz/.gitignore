@@ -1,3 +1,5 @@
 macros/
 macro_text.h
 .venv/
+# QMK ignores *.svg; keep the keymap drawing
+!keymap-drawer/sweep.svg

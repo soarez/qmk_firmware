@@ -1,0 +1,152 @@
+# Labels match gil's keymap-drawer/config.yaml, so both boards draw alike
+parse_config:
+  sticky_label: $$mdi:gesture-tap-hold$$
+
+  raw_binding_map:
+    KC_NO:
+      tap: ""
+      type: none
+
+    # Ctrl+Alt+Cmd on T and Y
+    LCAG_T(KC_T): {tap: T, hold: $$mdi:diamond-outline$$}
+    RCAG_T(KC_Y): {tap: Y, hold: $$mdi:diamond-outline$$}
+
+    # Hyper (Shift+Ctrl+Alt+Cmd) on G and H
+    HYPR_T(KC_G): {tap: G, hold: $$mdi:rocket$$}
+    HYPR_T(KC_H): {tap: H, hold: $$mdi:rocket$$}
+
+    # Homerow mods
+    LCTL_T(KC_A): {tap: A, hold: $$mdi:apple-keyboard-control$$}
+    LOPT_T(KC_S): {tap: S, hold: $$mdi:apple-keyboard-option$$}
+    LCMD_T(KC_D): {tap: D, hold: $$mdi:apple-keyboard-command$$}
+    LSFT_T(KC_F): {tap: F, hold: $$mdi:apple-keyboard-shift$$}
+    RSFT_T(KC_J): {tap: J, hold: $$mdi:apple-keyboard-shift$$}
+    RCMD_T(KC_K): {tap: K, hold: $$mdi:apple-keyboard-command$$}
+    ROPT_T(KC_L): {tap: L, hold: $$mdi:apple-keyboard-option$$}
+    RCTL_T(KC_SCLN): {tap: ";", hold: $$mdi:apple-keyboard-control$$}
+
+    # Dictation (Wispr Flow, superwhisper): hold for Numbers, tap then hold for
+    # F20, double tap for one F20, triple tap for two
+    L4_F20: {tap: $$mdi:microphone$$, shifted: F20, hold: Numbers}
+    KC_F20: {tap: $$mdi:microphone$$, shifted: F20}
+
+    # Text macros, typed from text set at build time
+    LCGRIND: {tap: $$mdi:text-box-outline$$, shifted: lcgrind}
+
+    CW_TOGG: $$mdi:alpha-w-box$$
+
+    # Cmd+key
+    LGUI(KC_Z): $$mdi:undo$$
+    LGUI(KC_X): $$mdi:content-cut$$
+    LGUI(KC_C): $$mdi:content-copy$$
+    LGUI(KC_V): $$mdi:content-paste$$
+
+    # Mouse
+    KC_MS_U: {tap: $$mdi:arrow-up-thin$$, shifted: mouse}
+    KC_MS_D: {tap: $$mdi:arrow-down-thin$$, shifted: mouse}
+    KC_MS_L: {tap: $$mdi:arrow-left-thin$$, shifted: mouse}
+    KC_MS_R: {tap: $$mdi:arrow-right-thin$$, shifted: mouse}
+    KC_WH_U: {tap: $$mdi:arrow-up-thin$$, shifted: scroll}
+    KC_WH_D: {tap: $$mdi:arrow-down-thin$$, shifted: scroll}
+    KC_BTN1: {tap: $$mdi:mouse$$, shifted: left}
+    KC_BTN2: {tap: $$mdi:mouse$$, shifted: right}
+    KC_ACL0: Mouse slow
+    KC_ACL1: Mouse mid
+    KC_ACL2: Mouse fast
+
+    # System
+    KC_SLEP: $$mdi:sleep$$
+    QK_RBT: {tap: $$mdi:restart$$, shifted: reset}
+    QK_BOOT: {tap: $$mdi:chip$$, shifted: boot}
+
+    # RGB lighting
+    RGB_TOG: {tap: RGB, shifted: on/off}
+    RGB_MOD: {tap: RGB, shifted: next}
+    RGB_RMOD: {tap: RGB, shifted: prev}
+    RGB_HUI: {tap: Hue, shifted: +}
+    RGB_HUD: {tap: Hue, shifted: −}
+    RGB_SAI: {tap: Sat, shifted: +}
+    RGB_SAD: {tap: Sat, shifted: −}
+    RGB_VAI: {tap: Bright, shifted: +}
+    RGB_VAD: {tap: Bright, shifted: −}
+    RGB_SPI: {tap: Anim, shifted: +}
+    RGB_SPD: {tap: Anim, shifted: −}
+
+  qmk_keycode_map:
+    # Symbols
+    KC_GRV: "`"
+    KC_TILD: "~"
+    KC_EXLM: "!"
+    KC_AT: "@"
+    KC_HASH: "#"
+    KC_DLR: $
+    KC_PERC: "%"
+    KC_CIRC: ^
+    KC_AMPR: "&"
+    KC_ASTR: "*"
+    KC_LPRN: (
+    KC_RPRN: )
+    KC_MINS: "-"
+    KC_UNDS: _
+    KC_EQL: "="
+    KC_PLUS: "+"
+    KC_LBRC: "["
+    KC_LCBR: "{"
+    KC_RBRC: "]"
+    KC_RCBR: "}"
+    KC_BSLS: '\'
+    KC_PIPE: "|"
+    KC_SCLN: ";"
+    KC_QUOT: "'"
+    KC_DQUO: '"'
+    KC_COMM: ","
+    KC_DOT: "."
+    KC_SLSH: "/"
+
+    # Navigation
+    KC_UP: $$mdi:arrow-up-bold$$
+    KC_DOWN: $$mdi:arrow-down-bold$$
+    KC_LEFT: $$mdi:arrow-left-bold$$
+    KC_RGHT: $$mdi:arrow-right-bold$$
+
+    # Whitespace
+    KC_ENT: $$mdi:keyboard-return$$
+    KC_ESC: $$mdi:keyboard-esc$$
+    KC_TAB: $$mdi:keyboard-tab$$
+    KC_SPC: $$mdi:keyboard-space$$
+    KC_BSPC: $$mdi:backspace-outline$$
+    KC_DEL: $$mdi:backspace-reverse-outline$$
+
+    # Media
+    KC_MPLY: $$mdi:play-pause$$
+    KC_MFFD: $$mdi:fast-forward$$
+    KC_MRWD: $$mdi:rewind$$
+    # macOS reads Pause and Scroll Lock as display brightness
+    KC_PAUSE: {tap: $$mdi:brightness-7$$, shifted: bright +}
+    KC_SCROLL_LOCK: {tap: $$mdi:brightness-5$$, shifted: bright −}
+
+    # Volume
+    KC_MUTE: $$mdi:volume-off$$
+    KC_VOLU: $$mdi:volume-high$$
+    KC_VOLD: $$mdi:volume-low$$
+
+    # Keypad
+    KC_PPLS: "+"
+    KC_PMNS: "-"
+    KC_PAST: "*"
+    KC_PSLS: "/"
+    KC_PDOT: "."
+    KC_KP_DOT: "."
+    KC_P0: "0"
+    KC_P1: "1"
+    KC_P2: "2"
+    KC_P3: "3"
+    KC_P4: "4"
+    KC_P5: "5"
+    KC_P6: "6"
+    KC_P7: "7"
+    KC_P8: "8"
+    KC_P9: "9"
+
+draw_config:
+  append_colon_to_layer_header: false
