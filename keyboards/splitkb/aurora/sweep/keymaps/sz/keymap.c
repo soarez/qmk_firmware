@@ -29,6 +29,14 @@
 #undef KC_PASTE
 #define KC_PASTE LGUI(KC_V)
 
+// Right outer thumb: hold for layer 4, or tap then press-and-hold to hold F20
+// (push-to-talk in Wispr Flow and superwhisper)
+#define F20_TAP_WINDOW 200
+
+enum custom_keycodes {
+    L4_F20 = SAFE_RANGE,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* [0] = LAYOUT( */
 /*     RGB_TOG  , RGB_HUI , RGB_SAI , RGB_VAI     , RGB_SPI     , RGB_TOG  , RGB_HUI , RGB_SAI , RGB_VAI     , RGB_SPI     , */
@@ -40,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q        , KC_W        , KC_E        , KC_R      , T_CAG    , Y_CAG  , KC_U      , KC_I           , KC_O          , KC_P           ,
     A_LCTL      , S_LOPT      , D_LCMD      , F_LSFT    , G_HYPR   , H_HYPR , J_RSFT    , K_RCMD         , L_ROPT        , SCLN_RCTL      ,
     KC_Z        , KC_X        , KC_C        , KC_V      , KC_B     , KC_N   , KC_M      , KC_COMM        , KC_DOT        , KC_SLSH        ,
-                                        LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), MO(4)
+                                        LT(3,KC_ESC), LT(1,KC_SPC), LT(2,KC_SPC), L4_F20
 ),
 [1] = LAYOUT(
     KC_TILD  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_DEL  ,
@@ -109,4 +117,40 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         default:
             return TAPPING_TERM;
     }
+}
+
+static uint32_t l4_f20_pressed_at;
+static uint32_t l4_f20_released_at;
+static bool     l4_f20_interrupted; // another key was pressed while the thumb was down
+static bool     l4_f20_armed;       // the last press was a clean tap
+static bool     l4_f20_holding;     // F20 is down
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode != L4_F20) {
+        if (record->event.pressed) {
+            l4_f20_interrupted = true;
+            l4_f20_armed       = false;
+        }
+        return true;
+    }
+
+    if (record->event.pressed) {
+        if (l4_f20_armed && timer_elapsed32(l4_f20_released_at) < F20_TAP_WINDOW) {
+            register_code(KC_F20);
+            l4_f20_holding = true;
+        } else {
+            layer_on(4);
+        }
+        l4_f20_armed       = false;
+        l4_f20_interrupted = false;
+        l4_f20_pressed_at  = timer_read32();
+    } else if (l4_f20_holding) {
+        unregister_code(KC_F20);
+        l4_f20_holding = false;
+    } else {
+        layer_off(4);
+        l4_f20_armed       = !l4_f20_interrupted && timer_elapsed32(l4_f20_pressed_at) < F20_TAP_WINDOW;
+        l4_f20_released_at = timer_read32();
+    }
+    return false;
 }
