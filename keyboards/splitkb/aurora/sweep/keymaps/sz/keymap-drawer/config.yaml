@@ -30,8 +30,8 @@ parse_config:
     L4_F20: {tap: $$mdi:microphone$$, shifted: F20, hold: Numbers}
     KC_F20: {tap: $$mdi:microphone$$, shifted: F20}
 
-    # Text macros, typed from text set at build time
-    LCGRIND: {tap: $$mdi:text-box-outline$$, shifted: lcgrind}
+    # Text macros are left out of the drawing
+    LCGRIND: {tap: "", type: none}
 
     CW_TOGG: $$mdi:alpha-w-box$$
 
